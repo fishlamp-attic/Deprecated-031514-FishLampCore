@@ -15,6 +15,9 @@
 #undef NOT_IMPLEMENTED_WARNINGS
 #define NOT_IMPLEMENTED_WARNINGS 0
 
+@interface FLAssertionTests : FLTestable
+@end
+
 @implementation FLAssertionTests
 
 
