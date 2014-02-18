@@ -9,6 +9,9 @@
 
 #import "FLLogEntry.h"
 #import "FLLogger.h"
+#import "NSError+FishLampCore.h"
+#import "NSError+FLStackTrace.h"
+#import "NSException+FLError.h"
 
 @interface FLLogEntry () 
 @property (readwrite, strong, nonatomic) NSString* logName;

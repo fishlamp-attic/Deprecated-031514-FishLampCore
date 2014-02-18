@@ -10,7 +10,7 @@
 #import "FLCoreFrameworkTest.h"
 
 #import "FLAssertionTests.h"
-#import "FishLampTesting.h"
+#import "FishLampTestables.h"
 
 #undef NOT_IMPLEMENTED_WARNINGS
 #define NOT_IMPLEMENTED_WARNINGS 0

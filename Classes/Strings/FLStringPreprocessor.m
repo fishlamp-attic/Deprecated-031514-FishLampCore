@@ -7,7 +7,7 @@
 //
 
 #import "FLStringPreprocessor.h"
-#import "FishLampCore.h"
+#import "FishLampRequired.h"
 
 typedef void (^FLStringPreprocessorOutputBlock)(NSRange range);
 

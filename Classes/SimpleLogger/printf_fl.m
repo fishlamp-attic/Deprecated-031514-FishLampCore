@@ -1,5 +1,5 @@
 //
-//  FLPrintf.m
+//  printf_fl.m
 //  FishLampFrameworks
 //
 //  Created by Mike Fullerton on 8/22/12.
@@ -7,9 +7,9 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLPrintf.h"
+#import "printf_fl.h"
 #import "FLWhitespace.h"
-#import "FishLampCore.h"
+#import "FishLampRequired.h"
 
 @implementation FLPrintfStringFormatter
 

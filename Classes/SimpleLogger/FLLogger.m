@@ -8,7 +8,7 @@
 //
 
 #import "FLLogger.h"
-#import "FishLampCore.h"
+#import "FishLampRequired.h"
 #import <objc/runtime.h>
 
 #import "FLLogSink.h"

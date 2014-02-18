@@ -7,7 +7,7 @@
 //
 
 #import "FLOwnershipTests.h"
-#import "FishLampTesting.h"
+#import "FishLampTestables.h"
 
 #if 0
 #import "FLObjectProxies.h"

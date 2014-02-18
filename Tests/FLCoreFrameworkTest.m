@@ -7,7 +7,7 @@
 //
 
 #import "FLCoreFrameworkTest.h"
-#import "FishLampTesting.h"
+#import "FishLampTestables.h"
 #import "FLCoreTestGroup.h"
 
 @implementation FLCoreFrameworkTest

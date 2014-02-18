@@ -8,7 +8,7 @@
 //
 
 #import "FLConsoleLogSink.h"
-#import "FLPrintf.h"
+#import "printf_fl.h"
 #import "NSString+FishLamp.h"
 #import "FLLogEntry.h"
 #import "FLStackTrace.h"
@@ -41,16 +41,16 @@
 
 - (void) logEntry:(FLLogEntry*) entry stopPropagating:(BOOL*) stop {
 
-    FLPrintf(@"%@", entry.logString);
+    printf_fl(@"%@", entry.logString);
 
     if(FLTestAnyBit(self.outputFlags, FLLogOutputWithLocation | FLLogOutputWithStackTrace)) { 
         [[FLPrintfStringFormatter instance] indentLinesInBlock:^{
             NSString* moreInfo = [entry.object moreDescriptionForLogging];
             if(moreInfo) {
-                FLPrintf(@"%@", moreInfo);
+                printf_fl(@"%@", moreInfo);
             }
             
-            FLPrintf(@"%@:%d: %@",
+            printf_fl(@"%@:%d: %@",
                          entry.stackTrace.fileName,
                          entry.stackTrace.lineNumber,
                          entry.stackTrace.function);
@@ -62,7 +62,7 @@
         [[FLPrintfStringFormatter instance] indentLinesInBlock:^{
             if(entry.stackTrace.callStack.depth) {
                 for(int i = 0; i < entry.stackTrace.callStack.depth; i++) {
-                    FLPrintf(@"%s", [entry.stackTrace stackEntryAtIndex:i]);
+                    printf_fl(@"%s", [entry.stackTrace stackEntryAtIndex:i]);
                 }
             }
         }];

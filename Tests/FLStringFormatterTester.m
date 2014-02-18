@@ -7,7 +7,7 @@
 //
 
 #import "FLStringFormatterTester.h"
-#import "FishLampTesting.h"
+#import "FishLampTestables.h"
 
 @implementation FLTestWhitespace
 

@@ -6,9 +6,14 @@
 //	Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton. 
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
-#import "FishLampCore.h"
+#import "FishLampRequired.h"
+#import "FishLampPropertyDeclaring.h"
 #import "FLLogger.h"
-// WARNING: don't import anything here. This file is imported by FishLamp.  This is imported by everything.
+
+@interface FLLogLogger : FLLogger
+FLSingletonProperty(FLLogLogger);
+@end
+
 
 #define FLLogTypeTrace      @"com.fishlamp.trace"
 #define FLLogTypeDebug      @"com.fishlamp.debug"
@@ -32,30 +37,28 @@
 
 #if DEBUG
 
-#define FLDebugLog(__FORMAT__, ...)   \
-			FLLogToLogger([FLLogLogger instance], FLLogTypeDebug, __FORMAT__, ##__VA_ARGS__)
+    #define FLDebugLog(__FORMAT__, ...)   \
+                FLLogToLogger([FLLogLogger instance], FLLogTypeDebug, __FORMAT__, ##__VA_ARGS__)
 
 #else
-#define FLDebugLog(...)
+    #define FLDebugLog(...)
+
 #endif
 
 #ifdef FLTrace
-#undef FLTrace
+    #undef FLTrace
 #endif
 
 #define FLTrace(__FORMAT__, ...)
 #define FLTraceIf(__CONDITION__, __FORMAT__, ...)
 
 #ifndef FL_DIVERT_NSLOG
-#define FL_DIVERT_NSLOG 0
+    #define FL_DIVERT_NSLOG 0
 #endif
 
 #if FL_DIVERT_NSLOG
-#define NSLog FLLog
+    #define NSLog FLLog
 #endif
 
-@interface FLLogLogger : FLLogger
-FLSingletonProperty(FLLogLogger);
-@end
 
 
