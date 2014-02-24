@@ -25,6 +25,7 @@
     NSMutableArray* _sinks;
     dispatch_queue_t _fifoQueue;
     NSMutableString* _line;
+    OSSpinLock _spinLock;
 }
 
 + (id) logger;
@@ -48,7 +49,4 @@
         stackTrace:(FLStackTrace*) stackTrace;
 
 @end
-
-#define FLLogToLogger(__LOGGER_, __TYPE__, __FORMAT__, ...) \
-            [__LOGGER_ logString:FLStringWithFormatOrNil(__FORMAT__, ##__VA_ARGS__) logType:__TYPE__ stackTrace:FLCreateStackTrace(NO)];
 

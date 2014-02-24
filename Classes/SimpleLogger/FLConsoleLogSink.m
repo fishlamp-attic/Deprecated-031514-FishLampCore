@@ -16,19 +16,12 @@
 
 @implementation FLConsoleLogSink
 
-- (id) init {	
-	self = [super init];
-	if(self) {
-	}
-	return self;
-}
-
 + (id) consoleLogSink {
     return FLAutorelease([[[self class] alloc] init]);
 }
 
-+ (FLLogSink*) consoleLogSink:(FLLogSinkOutputFlags) outputFlags {
-    return FLAutorelease([[[self class] alloc] initWithOutputFlags:outputFlags]);
++ (FLLogSink*) consoleLogSink:(FLLogSinkBehavior*) outputFlags {
+    return FLAutorelease([[[self class] alloc] initWithBehavior:outputFlags]);
 }
 
 - (void) indent:(FLIndentIntegrity*) integrity {
@@ -43,7 +36,8 @@
 
     printf_fl(@"%@", entry.logString);
 
-    if(FLTestAnyBit(self.outputFlags, FLLogOutputWithLocation | FLLogOutputWithStackTrace)) { 
+    if(self.behavior.outputLocation || self.behavior.outputStackTrace) {
+
         [[FLPrintfStringFormatter instance] indentLinesInBlock:^{
             NSString* moreInfo = [entry.object moreDescriptionForLogging];
             if(moreInfo) {
@@ -57,7 +51,7 @@
         }];
     }
 
-    if(FLTestBits(self.outputFlags, FLLogOutputWithStackTrace)) {
+    if(self.behavior.outputStackTrace) {
 
         [[FLPrintfStringFormatter instance] indentLinesInBlock:^{
             if(entry.stackTrace.callStack.depth) {

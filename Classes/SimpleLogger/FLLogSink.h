@@ -9,16 +9,9 @@
 
 #import "FishLampRequired.h"
 #import "FLStringFormatter.h"
+#import "FLLogSinkBehavior.h"
 
 @class FLLogEntry;
-
-typedef enum {
-    FLLogOutputSimple           = 0,
-    FLLogOutputWithLocation     = (1 << 1),
-    FLLogOutputWithStackTrace   = (1 << 2)
-} FLLogSinkOutputFlags;
-
-@class FLLogger;
 
 @protocol FLLogSink <NSObject>
 - (void) logEntry:(FLLogEntry*) entry stopPropagating:(BOOL*) stop;
@@ -30,11 +23,12 @@ typedef enum {
 
 @interface FLLogSink : NSObject<FLLogSink> {
 @private
-    FLLogSinkOutputFlags _outputFlags;
+    id<FLLogSinkBehavior> _behavior;
 }
-- (id) initWithOutputFlags:(FLLogSinkOutputFlags) outputFlags;
 
-@property (readwrite, assign) FLLogSinkOutputFlags outputFlags;
+- (id) initWithBehavior:(id<FLLogSinkBehavior>) behavior;
+
+@property (readwrite, strong) id<FLLogSinkBehavior> behavior;
 @end
 
 

@@ -17,18 +17,20 @@
 
 #if DEBUG
 
-#define FLTrace(__FORMAT__, ...) \
-            FLLogToLogger([FLLogLogger instance], FLLogTypeTrace, __FORMAT__, ##__VA_ARGS__)
+#define FLTrace(FORMAT...) \
+            [[FLLogLogger instance] logString:[NSString stringWithFormat:FORMAT] \
+                                      logType:FLLogTypeTrace \
+                                   stackTrace:FLCreateStackTrace(NO)];
 
-#define FLTraceIf(__CONDITION__, __FORMAT__, ...) \
-            if(__CONDITION__) FLTrace(__FORMAT__, ##__VA_ARGS__)
+#define FLTraceIf(CONDITION, FORMAT...) \
+            if(CONDITION) FLTrace(FORMAT)
 
 #define TRACE 1
 
 #else
 
-#define FLTrace(__FORMAT__, ...)
+#define FLTrace(...)
 
-#define FLTraceIf(__CONDITION__, __FORMAT__, ...) 
+#define FLTraceIf(...)
 
 #endif

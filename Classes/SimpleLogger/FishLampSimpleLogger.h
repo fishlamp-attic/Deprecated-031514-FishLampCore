@@ -10,6 +10,7 @@
 
 #import "FLLogger.h"
 
+#import "FLLogSinkBehavior.h"
 #import "FLLogSink.h"
 #import "FLLogEntry.h"
 

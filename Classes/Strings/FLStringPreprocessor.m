@@ -8,6 +8,7 @@
 
 #import "FLStringPreprocessor.h"
 #import "FishLampRequired.h"
+#import "FLAssert.h"
 
 typedef void (^FLStringPreprocessorOutputBlock)(NSRange range);
 

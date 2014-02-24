@@ -35,6 +35,8 @@
 
 #endif        
         _sinks = [[NSMutableArray alloc] init];
+
+        _spinLock = OS_SPINLOCK_INIT;
     }
     
     return self;
@@ -57,9 +59,18 @@
 - (void) dispatchBlock:(dispatch_block_t) block {
 //    dispatch_sync(_fifoQueue, block);
 
-    @synchronized(self) {
+//    @synchronized(self) {
+//        block();
+//    }
+
+    @try {
+        OSSpinLockLock(&_spinLock);
         block();
     }
+    @finally {
+        OSSpinLockUnlock(&_spinLock);
+    }
+
 }
 
 - (void) pushLoggerSink:(id<FLLogSink>) sink {

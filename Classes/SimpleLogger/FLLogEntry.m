@@ -102,7 +102,7 @@ static NSMutableArray* s_cache = nil;
     entry.stackTrace = self.stackTrace;
     entry.logCount = self.logCount;
     entry.timestamp = self.timestamp;
-    entry.object = FLCopyOrRetainObject(self.object);
+    entry.object = FLCopyOrRetainObjectWithAutorelease(self.object);
     return entry;
 }
 

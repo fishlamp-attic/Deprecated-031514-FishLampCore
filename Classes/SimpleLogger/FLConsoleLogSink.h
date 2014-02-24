@@ -14,7 +14,7 @@
 @private
 }
 + (id) consoleLogSink;
-+ (FLLogSink*) consoleLogSink:(FLLogSinkOutputFlags) outputFlags;
++ (FLLogSink*) consoleLogSink:(FLLogSinkBehavior*) outputFlags;
 
 @end
 
