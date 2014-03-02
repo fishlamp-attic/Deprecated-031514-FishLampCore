@@ -16,6 +16,8 @@
 #define FLLogTypeException  @"com.fishlamp.exception"
 
 @protocol FLLogSink;
+@protocol FLLogSinkBehavior;
+
 @class FLLogger;
 @class FLLogEntry;
 @class FLStackTrace;
@@ -37,6 +39,8 @@
 - (void) logEntry:(FLLogEntry*) entry;
 - (void) logObject:(id) object;
 - (void) logArrayOfLogEntries:(NSArray*) entryArray;
+
+- (void) updateLogSinkBehavior:(id<FLLogSinkBehavior>) behavior;
 
 @end
 

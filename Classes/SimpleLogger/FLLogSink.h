@@ -19,6 +19,8 @@
 - (void) indent:(FLIndentIntegrity*) integrity;
 - (void) outdent:(FLIndentIntegrity*) integrity;
 
+- (void) updateLogSinkBehavior:(id<FLLogSinkBehavior>) behavior;
+
 @end
 
 @interface FLLogSink : NSObject<FLLogSink> {

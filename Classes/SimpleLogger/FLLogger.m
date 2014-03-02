@@ -102,6 +102,14 @@
     [entry releaseToCache];
 }
 
+- (void) updateLogSinkBehavior:(id<FLLogSinkBehavior>) behavior {
+    [self dispatchBlock: ^{
+        for(id<FLLogSink> sink in _sinks) {
+            [sink updateLogSinkBehavior:behavior];
+        }
+    }];
+}
+
 - (void) logEntry:(FLLogEntry*) entry {
     [self dispatchBlock: ^{
         [self sendEntryToSinks:entry];

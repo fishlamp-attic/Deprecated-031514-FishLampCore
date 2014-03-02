@@ -28,6 +28,11 @@
     return [self initWithBehavior:nil];
 }
 
+- (void) updateLogSinkBehavior:(id<FLLogSinkBehavior>) behavior {
+    self.behavior = behavior;
+}
+
+
 #if FL_MRC
 - (void)dealloc {
 	[_behavior release];
